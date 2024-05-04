@@ -5,3 +5,5 @@ furo
 sphinx-favicon
 sphinxcontrib-mermaid
 pillow
+pynput
+scipy

@@ -20,7 +20,7 @@ echo "Installing package..."
 
 cd "$EXTRACTED_DIR"
 
-python3 setup.py install
+sudo python3 setup.py install
 echo "All done"
 
 echo "Now test"
