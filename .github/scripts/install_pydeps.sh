@@ -30,4 +30,9 @@ ls
 
 cat genalyzer.py
 
+cd .local/lib/python3.10/site-packages
+ls
+
+cat genalyzer.py
+
 echo "Done"
