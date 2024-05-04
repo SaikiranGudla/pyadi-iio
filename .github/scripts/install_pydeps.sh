@@ -22,3 +22,12 @@ cd "$EXTRACTED_DIR"
 
 sudo python3 setup.py install
 echo "All done"
+
+echo "Now test"
+
+cd /usr/local/lib/python3.10/dist-packages/
+ls
+
+cat genalyzer.py
+
+echo "Done"
