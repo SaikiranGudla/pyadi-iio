@@ -33,13 +33,8 @@ make
 
 sudo make install
 
-ls
-
-cd bindings/c/src
-
-echo "See now"
-
-ls
+sudo ldconfig
+cd ..
 
 
 #URL="https://test.pypi.org/simple/ pylibgenalyzer-0.0.1.dev1705356746.tar.gz"
@@ -56,7 +51,7 @@ ls
 
 
 
-pip install --index-url https://test.pypi.org/simple/ pylibgenalyzer
+
 
 
 
