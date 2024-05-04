@@ -33,11 +33,18 @@ make
 
 sudo make install
 
+ls
+
+cd bindings/c/src
+
+echo "See now"
+
+ls
 
 
-URL="https://test.pypi.org/simple/ pylibgenalyzer-0.0.1.dev1705356746.tar.gz"
+#URL="https://test.pypi.org/simple/ pylibgenalyzer-0.0.1.dev1705356746.tar.gz"
 
-EXTRACTED_DIR="ylibgenalyzer-0.0.1.dev1705356746"
+#EXTRACTED_DIR="ylibgenalyzer-0.0.1.dev1705356746"
 
 
 
