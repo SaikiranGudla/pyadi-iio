@@ -20,7 +20,7 @@ echo "Installing package..."
 
 cd "$EXTRACTED_DIR"
 
-sudo python3 setup.py install
+python3 setup.py install
 echo "All done"
 
 echo "Now test"
@@ -34,5 +34,8 @@ cd .local/lib/python3.10/site-packages
 ls
 
 cat genalyzer.py
+
+echo "Advanced one"
+cat genalyzer_advanced.py
 
 echo "Done"
