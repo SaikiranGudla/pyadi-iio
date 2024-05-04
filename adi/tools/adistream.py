@@ -8,7 +8,7 @@ from time import sleep
 
 import adi
 import numpy as np
-from genalyzer import config_quantize
+import genalyzer
 from genalyzer import WaveformGen
 from pynput import keyboard
 
