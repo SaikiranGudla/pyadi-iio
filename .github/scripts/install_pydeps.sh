@@ -28,7 +28,7 @@ echo "Now test"
 cd /usr/local/lib/python3.10/dist-packages/
 ls
 
-cat genalyzer.py
+#cat genalyzer.py
 
 cd .local/lib/python3.10/site-packages
 ls
@@ -37,5 +37,8 @@ cat genalyzer.py
 
 echo "Advanced one"
 cat genalyzer_advanced.py
+
+rm genalyzer.py
+rm genalyzer_advanced.py
 
 echo "Done"
