@@ -1,0 +1,57 @@
+#!/bin/bash
+
+
+
+echo "Installing.. Let's try your luck"
+
+
+
+#sudo apt-get update
+
+sudo apt-get install libfftw3-dev
+
+
+
+git clone https://github.com/analogdevicesinc/genalyzer.git
+
+cd genalyzer
+
+
+
+#sudo pip3 install -r requirements_doc.txt
+
+
+
+mkdir build
+
+cd build
+
+cmake -PYTHON_BINDINGS=ON ..
+
+make
+
+sudo make install
+
+
+
+URL="https://test.pypi.org/simple/ pylibgenalyzer-0.0.1.dev1705356746.tar.gz"
+
+EXTRACTED_DIR="ylibgenalyzer-0.0.1.dev1705356746"
+
+
+
+#wget "$URL"
+
+
+
+#pip install --index-url https://test.pypi.org/simple/ pylibgenalyzer-0.0.1.dev1705356746.tar.gz
+
+
+
+pip install --index-url https://test.pypi.org/simple/ pylibgenalyzer
+
+
+
+
+
+echo "All done"

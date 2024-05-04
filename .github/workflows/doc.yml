@@ -18,6 +18,7 @@ jobs:
           bash ./.github/scripts/install_libiio.sh
           bash ./.github/scripts/install_part_libs.sh
           bash ./.github/scripts/install_pydeps.sh
+          bash ./.github/scripts/install_gen.sh
           pip install -r requirements_doc.txt
 
       - name: Check doc build
