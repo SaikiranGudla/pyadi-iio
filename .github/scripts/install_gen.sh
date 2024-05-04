@@ -8,7 +8,8 @@ echo "Installing.. Let's try your luck"
 
 #sudo apt-get update
 
-sudo apt-get install libfftw3-dev
+sudo apt-get update
+sudo apt-get install build-essential libfftw3-dev
 
 
 
@@ -26,7 +27,7 @@ mkdir build
 
 cd build
 
-cmake -PYTHON_BINDINGS=ON ..
+cmake -DPYTHON_BINDINGS=ON ..
 
 make
 
