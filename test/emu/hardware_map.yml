@@ -791,3 +791,12 @@ ad7490:
       - filename: ad7490.xml
       - data_devices:
           - iio:device0
+          
+ad5710r:
+  - ad5710r
+  - pyadi_iio_class_support:
+      - ad5710r
+  - emulate:
+      - filename: ad5710r.xml
+      - data_devices:
+          - iio:device0
