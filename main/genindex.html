@@ -1,22 +1,449 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; Analog Devices Hardware Python Interfaces 0.0.20 documentation</title>
+    <title>Index &#8212; Analog Devices Hardware Python Interfaces 0.0.21 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="_static/app.min.css?v=85dade36" />
+    <link rel="stylesheet" type="text/css" href="_static/app.min.css?v=5d595293" />
     <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=632a43e7" />
-    <script async="async" src="_static/app.umd.js?v=3a4867e9"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
-    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+    <script async="async" src="_static/app.umd.js?v=46a18818"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
-    <script type="module">
-import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
-window.addEventListener("load", () => mermaid.run());
-</script>
+    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = `pre.mermaid {
+    /* Same as .mermaid-container > pre */
+    display: block;
+    width: 100%;
+}
+
+pre.mermaid > svg {
+    /* Same as .mermaid-container > pre > svg */
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}`;
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = `.mermaid-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.mermaid-container > pre {
+    display: block;
+    width: 100%;
+}
+
+.mermaid-container > pre > svg {
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.mermaid-fullscreen-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 95vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-container-fullscreen pre.mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen .mermaid svg {
+    height: 100% !important;
+    width: 100% !important;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}`;
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        all_mermaids.forEach((el) => {
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+        await mermaid.run();
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if ("False" === "True") {
+        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("");
+            if(all_mermaids.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else if(svgs.size() !== mermaids_to_add_zoom) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else {
+                svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                        inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                });
+            }
+        }
+    } else if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if ("True" !== "True") return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+        fullscreenBtn.style.opacity = '50%';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scroll, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.sdisplay = 'block';
+
+                if ("False" === "True") {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+const load = async () => {
+    initStyles();
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...JSON.parse(
+                    `{"startOnLoad": false}`
+                ),
+                ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...JSON.parse(
+        `{"startOnLoad": false}`
+    ),
+    ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+    }
+);
+
+window.addEventListener("load", load);</script>
     <link rel="icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" />
@@ -24,7 +451,7 @@ window.addEventListener("load", () => mermaid.run());
   
   
   <meta name="repository" content="pyadi-iio">
-  <meta name="version" content="0.0.20">
+  <meta name="version" content="0.0.21">
   
   
   
@@ -102,7 +529,7 @@ window.addEventListener("load", () => mermaid.run());
     </div>
 
   
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
     <a id="logo" href="index.html">
       <img class="only-light" src="_static/logos/PyADI-IIO_Logo_300_cropped.png"/>
@@ -155,6 +582,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad5592r.html">ad5592r</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad5627.html">ad5627</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad5686.html">ad5686</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devices/adi.ad5710r.html">ad5710r</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad579x.html">ad579x</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad5754r.html">ad5754r</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad5940.html">adi.ad5940 module</a></li>
@@ -166,6 +594,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad719x.html">ad719x</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad7291.html">ad7291</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad738x.html">ad738x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devices/adi.ad7405.html">ad7405</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad7490.html">ad7490</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad7606.html">ad7606</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad7689.html">ad7689</a></li>
@@ -196,6 +625,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad9680.html">ad9680</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad4858.html">ad4858</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad9739a.html">adi.ad9739a module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devices/adi.ada4355.html">ada4355</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ada4961.html">adi.ada4961 module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.adaq8092.html">adaq8092</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.adar1000.html">adar1000</a></li>
@@ -262,6 +692,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.jesd.html">jesd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.lm75.html">lm75</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ltc2314_14.html">ltc2314_14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devices/adi.ltc2378.html">ltc2378</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ltc2387.html">ltc2387</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ltc2499.html">adi.ltc2499 module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ltc2664.html">ltc2664</a></li>
@@ -648,6 +1079,8 @@ Content on this topic
 </li>
       <li><a href="devices/adi.ad5686.html#adi.ad5686.ad5686">ad5686 (class in adi.ad5686)</a>
 </li>
+      <li><a href="devices/adi.ad5710r.html#adi.ad5710r.ad5710r">ad5710r (class in adi.ad5710r)</a>
+</li>
       <li><a href="devices/adi.ad5754r.html#adi.ad5754r.ad5754r">ad5754r (class in adi.ad5754r)</a>
 </li>
       <li><a href="devices/adi.ad579x.html#adi.ad579x.ad579x">ad579x (class in adi.ad579x)</a>
@@ -669,6 +1102,8 @@ Content on this topic
       <li><a href="devices/adi.ad7291.html#adi.ad7291.ad7291">ad7291 (class in adi.ad7291)</a>
 </li>
       <li><a href="devices/adi.ad738x.html#adi.ad738x.ad738x">ad738x (class in adi.ad738x)</a>
+</li>
+      <li><a href="devices/adi.ad7405.html#adi.ad7405.ad7405">ad7405 (class in adi.ad7405)</a>
 </li>
       <li><a href="devices/adi.ad7490.html#adi.ad7490.ad7490">ad7490 (class in adi.ad7490)</a>
 </li>
@@ -735,6 +1170,12 @@ Content on this topic
       <li><a href="devices/adi.ad9680.html#adi.ad9680.ad9680">ad9680 (class in adi.ad9680)</a>
 </li>
       <li><a href="devices/adi.ad9739a.html#adi.ad9739a.ad9739a">ad9739a (class in adi.ad9739a)</a>
+</li>
+      <li><a href="devices/adi.ada4355.html#adi.ada4355.ada4355">ada4355 (class in adi.ada4355)</a>
+</li>
+      <li><a href="devices/adi.ada4355.html#adi.ada4355.ada4355.ada4355_register_read">ada4355_register_read() (adi.ada4355.ada4355 method)</a>
+</li>
+      <li><a href="devices/adi.ada4355.html#adi.ada4355.ada4355.ada4355_register_write">ada4355_register_write() (adi.ada4355.ada4355 method)</a>
 </li>
       <li><a href="devices/adi.ada4961.html#adi.ada4961.ada4961">ada4961 (class in adi.ada4961)</a>
 </li>
@@ -902,6 +1343,13 @@ Content on this topic
 </li>
       </ul></li>
       <li>
+    adi.ad5710r
+
+      <ul>
+        <li><a href="devices/adi.ad5710r.html#module-adi.ad5710r">module</a>
+</li>
+      </ul></li>
+      <li>
     adi.ad5754r
 
       <ul>
@@ -976,6 +1424,13 @@ Content on this topic
 
       <ul>
         <li><a href="devices/adi.ad738x.html#module-adi.ad738x">module</a>
+</li>
+      </ul></li>
+      <li>
+    adi.ad7405
+
+      <ul>
+        <li><a href="devices/adi.ad7405.html#module-adi.ad7405">module</a>
 </li>
       </ul></li>
       <li>
@@ -1182,6 +1637,13 @@ Content on this topic
 </li>
       </ul></li>
       <li>
+    adi.ada4355
+
+      <ul>
+        <li><a href="devices/adi.ada4355.html#module-adi.ada4355">module</a>
+</li>
+      </ul></li>
+      <li>
     adi.ada4961
 
       <ul>
@@ -1244,6 +1706,8 @@ Content on this topic
         <li><a href="devices/adi.adf4382.html#module-adi.adf4382">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     adi.adf5610
 
@@ -1251,8 +1715,6 @@ Content on this topic
         <li><a href="devices/adi.adf5610.html#module-adi.adf5610">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     adi.adf5611
 
@@ -1569,6 +2031,13 @@ Content on this topic
 </li>
       </ul></li>
       <li>
+    adi.ltc2378
+
+      <ul>
+        <li><a href="devices/adi.ltc2378.html#module-adi.ltc2378">module</a>
+</li>
+      </ul></li>
+      <li>
     adi.ltc2387
 
       <ul>
@@ -1743,6 +2212,8 @@ Content on this topic
 </li>
       <li><a href="devices/adi.adt7420.html#adi.adt7420.adt7420">adt7420 (class in adi.adt7420)</a>
 </li>
+      <li><a href="devices/adi.adt7420.html#adi.adt7420.adt7420.channel_temp">adt7420.channel_temp (class in adi.adt7420)</a>
+</li>
       <li><a href="devices/adi.adxl313.html#adi.adxl313.adxl313">adxl313 (class in adi.adxl313)</a>
 </li>
       <li><a href="devices/adi.adxl345.html#adi.adxl345.adxl345">adxl345 (class in adi.adxl345)</a>
@@ -1758,13 +2229,29 @@ Content on this topic
       <li><a href="devices/adi.adrv9002.html#adi.adrv9002.adrv9002.agc_tracking_en_chan1">agc_tracking_en_chan1 (adi.adrv9002.adrv9002 property)</a>
 </li>
       <li><a href="devices/adi.ad353xr.html#adi.ad353xr.ad353xr.all_ch_input_registers">all_ch_input_registers (adi.ad353xr.ad353xr property)</a>
+
+      <ul>
+        <li><a href="devices/adi.ad5710r.html#adi.ad5710r.ad5710r.all_ch_input_registers">(adi.ad5710r.ad5710r property)</a>
 </li>
+      </ul></li>
       <li><a href="devices/adi.ad353xr.html#adi.ad353xr.ad353xr.all_ch_operating_mode">all_ch_operating_mode (adi.ad353xr.ad353xr property)</a>
+
+      <ul>
+        <li><a href="devices/adi.ad5710r.html#adi.ad5710r.ad5710r.all_ch_operating_mode">(adi.ad5710r.ad5710r property)</a>
 </li>
+      </ul></li>
       <li><a href="devices/adi.ad353xr.html#adi.ad353xr.ad353xr.all_ch_operating_mode_avail">all_ch_operating_mode_avail (adi.ad353xr.ad353xr property)</a>
+
+      <ul>
+        <li><a href="devices/adi.ad5710r.html#adi.ad5710r.ad5710r.all_ch_operating_mode_avail">(adi.ad5710r.ad5710r property)</a>
 </li>
+      </ul></li>
       <li><a href="devices/adi.ad353xr.html#adi.ad353xr.ad353xr.all_ch_raw">all_ch_raw (adi.ad353xr.ad353xr property)</a>
+
+      <ul>
+        <li><a href="devices/adi.ad5710r.html#adi.ad5710r.ad5710r.all_ch_raw">(adi.ad5710r.ad5710r property)</a>
 </li>
+      </ul></li>
       <li><a href="devices/adi.ad5754r.html#adi.ad5754r.ad5754r.all_chns_clear">all_chns_clear (adi.ad5754r.ad5754r property)</a>
 </li>
       <li><a href="devices/adi.ad5754r.html#adi.ad5754r.ad5754r.all_chns_clear_available">all_chns_clear_available (adi.ad5754r.ad5754r property)</a>
@@ -2360,6 +2847,8 @@ Content on this topic
 </li>
         <li><a href="devices/adi.ad738x.html#adi.ad738x.ad738x.channel">(adi.ad738x.ad738x attribute)</a>
 </li>
+        <li><a href="devices/adi.ad7405.html#adi.ad7405.ad7405.channel">(adi.ad7405.ad7405 attribute)</a>
+</li>
         <li><a href="devices/adi.ad7490.html#adi.ad7490.ad7490.channel">(adi.ad7490.ad7490 attribute)</a>
 </li>
         <li><a href="devices/adi.ad7606.html#adi.ad7606.ad7606.channel">(adi.ad7606.ad7606 attribute)</a>
@@ -2374,6 +2863,8 @@ Content on this topic
 </li>
         <li><a href="devices/adi.ad9166.html#adi.ad9166.ad9166.channel">(adi.ad9166.ad9166 attribute)</a>
 </li>
+        <li><a href="devices/adi.ada4355.html#adi.ada4355.ada4355.channel">(adi.ada4355.ada4355 attribute)</a>
+</li>
         <li><a href="devices/adi.adpd1080.html#adi.adpd1080.adpd1080.channel">(adi.adpd1080.adpd1080 attribute)</a>
 </li>
         <li><a href="devices/adi.adpd188.html#adi.adpd188.adpd188.channel">(adi.adpd188.adpd188 attribute)</a>
@@ -2381,6 +2872,8 @@ Content on this topic
         <li><a href="devices/adi.adpd410x.html#adi.adpd410x.adpd410x.channel">(adi.adpd410x.adpd410x attribute)</a>
 </li>
         <li><a href="devices/adi.adrf5720.html#adi.adrf5720.adrf5720.channel">(adi.adrf5720.adrf5720 attribute)</a>
+</li>
+        <li><a href="devices/adi.ltc2378.html#adi.ltc2378.ltc2378.channel">(adi.ltc2378.ltc2378 attribute)</a>
 </li>
         <li><a href="devices/adi.ltc2499.html#adi.ltc2499.ltc2499.channel">(adi.ltc2499.ltc2499 attribute)</a>
 </li>
@@ -2427,6 +2920,8 @@ Content on this topic
         <li><a href="devices/adi.adar1000.html#adi.adar1000.adar1000.channels">(adi.adar1000.adar1000 property)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="devices/adi.adf4377.html#adi.adf4377.adf4377.charge_pump_current">charge_pump_current (adi.adf4377.adf4377 property)</a>
 
       <ul>
@@ -2435,8 +2930,6 @@ Content on this topic
         <li><a href="devices/adi.adf5611.html#adi.adf5611.adf5611.charge_pump_current">(adi.adf5611.adf5611 property)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="devices/adi.adar1000.html#adi.adar1000.adar1000.chip_id">chip_id (adi.adar1000.adar1000 property)</a>
 </li>
       <li><a href="devices/adi.ad9081.html#adi.ad9081.ad9081.chip_version">chip_version (adi.ad9081.ad9081 property)</a>
@@ -3550,11 +4043,17 @@ Content on this topic
       <li><a href="devices/adi.ad353xr.html#adi.ad353xr.ad353xr.hw_ldac_trigger">hw_ldac_trigger (adi.ad353xr.ad353xr property)</a>
 
       <ul>
+        <li><a href="devices/adi.ad5710r.html#adi.ad5710r.ad5710r.hw_ldac_trigger">(adi.ad5710r.ad5710r property)</a>
+</li>
         <li><a href="devices/adi.ad5754r.html#adi.ad5754r.ad5754r.hw_ldac_trigger">(adi.ad5754r.ad5754r property)</a>
 </li>
       </ul></li>
       <li><a href="devices/adi.ad353xr.html#adi.ad353xr.ad353xr.hw_ldac_trigger_avail">hw_ldac_trigger_avail (adi.ad353xr.ad353xr property)</a>
+
+      <ul>
+        <li><a href="devices/adi.ad5710r.html#adi.ad5710r.ad5710r.hw_ldac_trigger_avail">(adi.ad5710r.ad5710r property)</a>
 </li>
+      </ul></li>
       <li><a href="devices/adi.ad5754r.html#adi.ad5754r.ad5754r.hw_ldac_trigger_available">hw_ldac_trigger_available (adi.ad5754r.ad5754r property)</a>
 </li>
       <li><a href="devices/adi.ad2s1210.html#adi.ad2s1210.ad2s1210.hysteresis_enable">hysteresis_enable (adi.ad2s1210.ad2s1210 property)</a>
@@ -3767,6 +4266,8 @@ Content on this topic
 </li>
       <li><a href="devices/adi.ltc2314_14.html#adi.ltc2314_14.ltc2314_14">ltc2314_14 (class in adi.ltc2314_14)</a>
 </li>
+      <li><a href="devices/adi.ltc2378.html#adi.ltc2378.ltc2378">ltc2378 (class in adi.ltc2378)</a>
+</li>
       <li><a href="devices/adi.ltc2387.html#adi.ltc2387.ltc2387">ltc2387 (class in adi.ltc2387)</a>
 </li>
       <li><a href="devices/adi.ltc2499.html#adi.ltc2499.ltc2499">ltc2499 (class in adi.ltc2499)</a>
@@ -3909,6 +4410,8 @@ Content on this topic
 </li>
         <li><a href="devices/adi.ad5686.html#module-adi.ad5686">adi.ad5686</a>
 </li>
+        <li><a href="devices/adi.ad5710r.html#module-adi.ad5710r">adi.ad5710r</a>
+</li>
         <li><a href="devices/adi.ad5754r.html#module-adi.ad5754r">adi.ad5754r</a>
 </li>
         <li><a href="devices/adi.ad579x.html#module-adi.ad579x">adi.ad579x</a>
@@ -3930,6 +4433,8 @@ Content on this topic
         <li><a href="devices/adi.ad7291.html#module-adi.ad7291">adi.ad7291</a>
 </li>
         <li><a href="devices/adi.ad738x.html#module-adi.ad738x">adi.ad738x</a>
+</li>
+        <li><a href="devices/adi.ad7405.html#module-adi.ad7405">adi.ad7405</a>
 </li>
         <li><a href="devices/adi.ad7490.html#module-adi.ad7490">adi.ad7490</a>
 </li>
@@ -3988,6 +4493,8 @@ Content on this topic
         <li><a href="devices/adi.ad9680.html#module-adi.ad9680">adi.ad9680</a>
 </li>
         <li><a href="devices/adi.ad9739a.html#module-adi.ad9739a">adi.ad9739a</a>
+</li>
+        <li><a href="devices/adi.ada4355.html#module-adi.ada4355">adi.ada4355</a>
 </li>
         <li><a href="devices/adi.ada4961.html#module-adi.ada4961">adi.ada4961</a>
 </li>
@@ -4099,6 +4606,8 @@ Content on this topic
 </li>
         <li><a href="devices/adi.ltc2314_14.html#module-adi.ltc2314_14">adi.ltc2314_14</a>
 </li>
+        <li><a href="devices/adi.ltc2378.html#module-adi.ltc2378">adi.ltc2378</a>
+</li>
         <li><a href="devices/adi.ltc2387.html#module-adi.ltc2387">adi.ltc2387</a>
 </li>
         <li><a href="devices/adi.ltc2499.html#module-adi.ltc2499">adi.ltc2499</a>
@@ -4153,9 +4662,17 @@ Content on this topic
       <li><a href="devices/adi.ltc2672.html#adi.ltc2672.ltc2672.mux_avail">mux_avail (adi.ltc2672.ltc2672 property)</a>
 </li>
       <li><a href="devices/adi.ad353xr.html#adi.ad353xr.ad353xr.mux_out_select">mux_out_select (adi.ad353xr.ad353xr property)</a>
+
+      <ul>
+        <li><a href="devices/adi.ad5710r.html#adi.ad5710r.ad5710r.mux_out_select">(adi.ad5710r.ad5710r property)</a>
 </li>
+      </ul></li>
       <li><a href="devices/adi.ad353xr.html#adi.ad353xr.ad353xr.mux_out_select_avail">mux_out_select_avail (adi.ad353xr.ad353xr property)</a>
+
+      <ul>
+        <li><a href="devices/adi.ad5710r.html#adi.ad5710r.ad5710r.mux_out_select_avail">(adi.ad5710r.ad5710r property)</a>
 </li>
+      </ul></li>
       <li><a href="devices/adi.adf4371.html#adi.adf4371.adf4371.muxout_mode">muxout_mode (adi.adf4371.adf4371 property)</a>
 </li>
       <li><a href="devices/adi.adf4159.html#adi.adf4159.adf4159.muxout_sel">muxout_sel (adi.adf4159.adf4159 property)</a>
@@ -4232,10 +4749,10 @@ Content on this topic
 </li>
       <li><a href="devices/adi.adl5960.html#adi.adl5960.adl5960.offset_mode_available">offset_mode_available (adi.adl5960.adl5960 property)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="devices/adi.one_bit_adc_dac.html#adi.one_bit_adc_dac.one_bit_adc_dac">one_bit_adc_dac (class in adi.one_bit_adc_dac)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="devices/adi.adg2128.html#adi.adg2128.adg2128.open_all">open_all() (adi.adg2128.adg2128 method)</a>
 </li>
       <li><a href="devices/adi.ad405x.html#adi.ad405x.ad405x.operating_mode">operating_mode (adi.ad405x.ad405x property)</a>
@@ -4257,7 +4774,11 @@ Content on this topic
       <li><a href="devices/adi.cn0554.html#adi.cn0554.cn0554.out_reference">out_reference (adi.cn0554.cn0554 property)</a>
 </li>
       <li><a href="devices/adi.ad353xr.html#adi.ad353xr.ad353xr.output_bits">output_bits (adi.ad353xr.ad353xr property)</a>
+
+      <ul>
+        <li><a href="devices/adi.ad5710r.html#adi.ad5710r.ad5710r.output_bits">(adi.ad5710r.ad5710r property)</a>
 </li>
+      </ul></li>
       <li><a href="devices/adi.ad4630.html#adi.ad4630.ad4630.output_data_mode">output_data_mode() (adi.ad4630.ad4630 method)</a>
 </li>
       <li><a href="devices/adi.ad3552r_hs.html#adi.ad3552r_hs.ad3552r_hs.output_range">output_range (adi.ad3552r_hs.ad3552r_hs property)</a>
@@ -4267,6 +4788,8 @@ Content on this topic
       <ul>
         <li><a href="devices/adi.ad4858.html#adi.ad4858.ad4858.oversampling_ratio">(adi.ad4858.ad4858 property)</a>
 </li>
+        <li><a href="devices/adi.ad7405.html#adi.ad7405.ad7405.oversampling_ratio">(adi.ad7405.ad7405 property)</a>
+</li>
         <li><a href="devices/adi.ad7606.html#adi.ad7606.ad7606.oversampling_ratio">(adi.ad7606.ad7606 property)</a>
 </li>
       </ul></li>
@@ -4275,6 +4798,8 @@ Content on this topic
       <li><a href="devices/adi.ad4080.html#adi.ad4080.ad4080.oversampling_ratio_available">oversampling_ratio_available (adi.ad4080.ad4080 property)</a>
 
       <ul>
+        <li><a href="devices/adi.ad7405.html#adi.ad7405.ad7405.oversampling_ratio_available">(adi.ad7405.ad7405 property)</a>
+</li>
         <li><a href="devices/adi.ad7606.html#adi.ad7606.ad7606.oversampling_ratio_available">(adi.ad7606.ad7606 property)</a>
 </li>
       </ul></li>
@@ -4423,11 +4948,17 @@ Content on this topic
       <li><a href="devices/adi.ad353xr.html#adi.ad353xr.ad353xr.range">range (adi.ad353xr.ad353xr property)</a>
 
       <ul>
+        <li><a href="devices/adi.ad5710r.html#adi.ad5710r.ad5710r.range">(adi.ad5710r.ad5710r property)</a>
+</li>
         <li><a href="devices/adi.ad7490.html#adi.ad7490.ad7490.range">(adi.ad7490.ad7490 property)</a>
 </li>
       </ul></li>
       <li><a href="devices/adi.ad353xr.html#adi.ad353xr.ad353xr.range_avail">range_avail (adi.ad353xr.ad353xr property)</a>
+
+      <ul>
+        <li><a href="devices/adi.ad5710r.html#adi.ad5710r.ad5710r.range_avail">(adi.ad5710r.ad5710r property)</a>
 </li>
+      </ul></li>
       <li><a href="devices/adi.ad7490.html#adi.ad7490.ad7490.range_available">range_available (adi.ad7490.ad7490 property)</a>
 
       <ul>
@@ -4471,9 +5002,17 @@ Content on this topic
 </li>
       </ul></li>
       <li><a href="devices/adi.ad353xr.html#adi.ad353xr.ad353xr.reference_select">reference_select (adi.ad353xr.ad353xr property)</a>
+
+      <ul>
+        <li><a href="devices/adi.ad5710r.html#adi.ad5710r.ad5710r.reference_select">(adi.ad5710r.ad5710r property)</a>
 </li>
+      </ul></li>
       <li><a href="devices/adi.ad353xr.html#adi.ad353xr.ad353xr.reference_select_available">reference_select_available (adi.ad353xr.ad353xr property)</a>
+
+      <ul>
+        <li><a href="devices/adi.ad5710r.html#adi.ad5710r.ad5710r.reference_select_available">(adi.ad5710r.ad5710r property)</a>
 </li>
+      </ul></li>
       <li><a href="devices/adi.adl5960.html#adi.adl5960.adl5960.reflected_gain">reflected_gain (adi.adl5960.adl5960 property)</a>
 </li>
       <li><a href="devices/adi.ad4080.html#adi.ad4080.ad4080.reg_read">reg_read() (adi.ad4080.ad4080 method)</a>
@@ -5153,6 +5692,8 @@ Content on this topic
 </li>
         <li><a href="devices/adi.ad4858.html#adi.ad4858.ad4858.sampling_frequency">(adi.ad4858.ad4858 property)</a>
 </li>
+        <li><a href="devices/adi.ad5710r.html#adi.ad5710r.ad5710r.sampling_frequency">(adi.ad5710r.ad5710r property)</a>
+</li>
         <li><a href="devices/adi.ad5754r.html#adi.ad5754r.ad5754r.sampling_frequency">(adi.ad5754r.ad5754r property)</a>
 </li>
         <li><a href="devices/adi.ad579x.html#adi.ad579x.ad579x.sampling_frequency">(adi.ad579x.ad579x property)</a>
@@ -5163,6 +5704,8 @@ Content on this topic
 </li>
         <li><a href="devices/adi.ad7768.html#adi.ad7768.ad7768.sampling_frequency">(adi.ad7768.ad7768 property)</a>
 </li>
+        <li><a href="devices/adi.ada4355.html#adi.ada4355.ada4355.sampling_frequency">(adi.ada4355.ada4355 property)</a>
+</li>
         <li><a href="devices/adi.adaq8092.html#adi.adaq8092.adaq8092.sampling_frequency">(adi.adaq8092.adaq8092 property)</a>
 </li>
         <li><a href="devices/adi.adpd410x.html#adi.adpd410x.adpd410x.sampling_frequency">(adi.adpd410x.adpd410x property)</a>
@@ -5170,6 +5713,8 @@ Content on this topic
         <li><a href="devices/adi.adxl345.html#adi.adxl345.adxl345.sampling_frequency">(adi.adxl345.adxl345 property)</a>
 </li>
         <li><a href="devices/adi.adxl380.html#adi.adxl380.adxl380.sampling_frequency">(adi.adxl380.adxl380 property)</a>
+</li>
+        <li><a href="devices/adi.ltc2378.html#adi.ltc2378.ltc2378.sampling_frequency">(adi.ltc2378.ltc2378 property)</a>
 </li>
         <li><a href="devices/adi.ltc2387.html#adi.ltc2387.ltc2387.sampling_frequency">(adi.ltc2387.ltc2387 property)</a>
 </li>
@@ -5236,10 +5781,10 @@ Content on this topic
 </li>
       <li><a href="devices/adi.gen_mux.html#adi.gen_mux.genmux.select_available">select_available (adi.gen_mux.genmux property)</a>
 </li>
-      <li><a href="devices/adi.cn0565.html#adi.cn0565.cn0565.sense_distance">sense_distance (adi.cn0565.cn0565 property)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="devices/adi.cn0565.html#adi.cn0565.cn0565.sense_distance">sense_distance (adi.cn0565.cn0565 property)</a>
+</li>
       <li><a href="devices/adi.cn0540.html#adi.cn0540.cn0540.sensor_voltage">sensor_voltage (adi.cn0540.cn0540 property)</a>
 </li>
       <li><a href="devices/adi.adar1000.html#adi.adar1000.adar1000.sequencer_enable">sequencer_enable (adi.adar1000.adar1000 property)</a>
@@ -5349,11 +5894,17 @@ Content on this topic
       <li><a href="devices/adi.ad353xr.html#adi.ad353xr.ad353xr.sw_ldac_trigger">sw_ldac_trigger (adi.ad353xr.ad353xr property)</a>
 
       <ul>
+        <li><a href="devices/adi.ad5710r.html#adi.ad5710r.ad5710r.sw_ldac_trigger">(adi.ad5710r.ad5710r property)</a>
+</li>
         <li><a href="devices/adi.ad5754r.html#adi.ad5754r.ad5754r.sw_ldac_trigger">(adi.ad5754r.ad5754r property)</a>
 </li>
       </ul></li>
       <li><a href="devices/adi.ad353xr.html#adi.ad353xr.ad353xr.sw_ldac_trigger_avail">sw_ldac_trigger_avail (adi.ad353xr.ad353xr property)</a>
+
+      <ul>
+        <li><a href="devices/adi.ad5710r.html#adi.ad5710r.ad5710r.sw_ldac_trigger_avail">(adi.ad5710r.ad5710r property)</a>
 </li>
+      </ul></li>
       <li><a href="devices/adi.ad5754r.html#adi.ad5754r.ad5754r.sw_ldac_trigger_available">sw_ldac_trigger_available (adi.ad5754r.ad5754r property)</a>
 </li>
       <li><a href="devices/adi.adf4382.html#adi.adf4382.adf4382.sw_sync_en">sw_sync_en (adi.adf4382.adf4382 property)</a>
@@ -5430,6 +5981,16 @@ Content on this topic
         <li><a href="devices/adi.adis16550.html#adi.adis16550.temp_conv">(adi.adis16550 property)</a>
 </li>
       </ul></li>
+      <li><a href="devices/adi.adt7420.html#adi.adt7420.adt7420.channel_temp.temp_crit">temp_crit (adi.adt7420.adt7420.channel_temp property)</a>
+</li>
+      <li><a href="devices/adi.adt7420.html#adi.adt7420.adt7420.channel_temp.temp_hyst">temp_hyst (adi.adt7420.adt7420.channel_temp property)</a>
+</li>
+      <li><a href="devices/adi.adt7420.html#adi.adt7420.adt7420.channel_temp.temp_max">temp_max (adi.adt7420.adt7420.channel_temp property)</a>
+</li>
+      <li><a href="devices/adi.adt7420.html#adi.adt7420.adt7420.channel_temp.temp_min">temp_min (adi.adt7420.adt7420.channel_temp property)</a>
+</li>
+      <li><a href="devices/adi.adt7420.html#adi.adt7420.adt7420.channel_temp.temp_val">temp_val (adi.adt7420.adt7420.channel_temp property)</a>
+</li>
       <li><a href="devices/adi.ad9166.html#adi.ad9166.ad9166.temperature">temperature (adi.ad9166.ad9166 property)</a>
 
       <ul>
@@ -5682,14 +6243,14 @@ Content on this topic
 </li>
       <li><a href="devices/adi.ad937x.html#adi.ad937x.ad9375.tx_clgc_tx_rms_chan0">tx_clgc_tx_rms_chan0 (adi.ad937x.ad9375 property)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="devices/adi.ad937x.html#adi.ad937x.ad9375.tx_clgc_tx_rms_chan1">tx_clgc_tx_rms_chan1 (adi.ad937x.ad9375 property)</a>
 </li>
       <li><a href="buffers/index.html#adi.rx_tx.tx_core">tx_core (class in adi.rx_tx)</a>
 </li>
       <li><a href="buffers/index.html#adi.rx_tx.tx_core.tx_cyclic_buffer">tx_cyclic_buffer (adi.rx_tx.tx_core property)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="devices/adi.ad9081.html#adi.ad9081.ad9081.tx_dac_en">tx_dac_en (adi.ad9081.ad9081 property)</a>
 </li>
       <li><a href="devices/adi.ad9081.html#adi.ad9081.ad9081.tx_dac_full_scale_current">tx_dac_full_scale_current (adi.ad9081.ad9081 property)</a>
@@ -6057,7 +6618,7 @@ Content on this topic
   <label id="cancel-area-show-toc" for="input-show-toc"></label>
   <label id="cancel-area-show-localtoc" for="input-show-localtoc"></label>
     <footer>
-      &#169;2019-2025, Analog Devices, Inc
+      &#169;2019-2026, Analog Devices, Inc
       
       |
       Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>

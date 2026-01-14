@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta content="pyadi-iio is a python abstraction module for ADI hardware with IIO drivers to make them easier to use. The libIIO interface although extremely flexible can be cumbersome to use due to the amount of boilerplate code required for even simple examples, especially when interfacing with buffers. This module has custom interfaces classes for specific parts and development systems which can generally make them easier to understand and use. To get up and running with a device can be as simple as a few lines of code:" name="description" />
 
-    <title>Analog Devices Hardware Python Interfaces &#8212; Analog Devices Hardware Python Interfaces 0.0.20 documentation</title>
+    <title>Analog Devices Hardware Python Interfaces &#8212; Analog Devices Hardware Python Interfaces 0.0.21 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="_static/app.min.css?v=85dade36" />
+    <link rel="stylesheet" type="text/css" href="_static/app.min.css?v=5d595293" />
     <link rel="stylesheet" type="text/css" href="_static/css/style.css?v=632a43e7" />
-    <script async="async" src="_static/app.umd.js?v=3a4867e9"></script>
+    <script async="async" src="_static/app.umd.js?v=46a18818"></script>
     <link rel="icon" href="_static/favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -19,7 +19,7 @@
   
   
   <meta name="repository" content="pyadi-iio">
-  <meta name="version" content="0.0.20">
+  <meta name="version" content="0.0.21">
   
     <meta name="page_source_suffix" content=".rst">
   
@@ -105,7 +105,7 @@
     </div>
 
   
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
     <a id="logo" href="#">
       <img class="only-light" src="_static/logos/PyADI-IIO_Logo_300_cropped.png"/>
@@ -158,6 +158,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad5592r.html">ad5592r</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad5627.html">ad5627</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad5686.html">ad5686</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devices/adi.ad5710r.html">ad5710r</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad579x.html">ad579x</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad5754r.html">ad5754r</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad5940.html">adi.ad5940 module</a></li>
@@ -169,6 +170,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad719x.html">ad719x</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad7291.html">ad7291</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad738x.html">ad738x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devices/adi.ad7405.html">ad7405</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad7490.html">ad7490</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad7606.html">ad7606</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad7689.html">ad7689</a></li>
@@ -199,6 +201,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad9680.html">ad9680</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad4858.html">ad4858</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ad9739a.html">adi.ad9739a module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devices/adi.ada4355.html">ada4355</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ada4961.html">adi.ada4961 module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.adaq8092.html">adaq8092</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.adar1000.html">adar1000</a></li>
@@ -265,6 +268,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.jesd.html">jesd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.lm75.html">lm75</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ltc2314_14.html">ltc2314_14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devices/adi.ltc2378.html">ltc2378</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ltc2387.html">ltc2387</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ltc2499.html">adi.ltc2499 module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devices/adi.ltc2664.html">ltc2664</a></li>
@@ -298,7 +302,7 @@ Content on this topic
           <div class="body" role="main">
             
   <section id="analog-devices-hardware-python-interfaces">
-<h1>Analog Devices Hardware Python Interfaces<a class="headerlink" href="#analog-devices-hardware-python-interfaces" title="Permalink to this heading"></a></h1>
+<h1>Analog Devices Hardware Python Interfaces<a class="headerlink" href="#analog-devices-hardware-python-interfaces" title="Link to this heading"></a></h1>
 <p><strong>pyadi-iio</strong> is a python abstraction module for ADI hardware with IIO drivers to make them easier to use. The libIIO interface although extremely flexible can be cumbersome to use due to the amount of boilerplate code required for even simple examples, especially when interfacing with buffers. This module has custom interfaces classes for specific parts and development systems which can generally make them easier to understand and use. To get up and running with a device can be as simple as a few lines of code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">adi</span>
 
@@ -308,18 +312,27 @@ Content on this topic
 <span class="n">data</span> <span class="o">=</span> <span class="n">sdr</span><span class="o">.</span><span class="n">rx</span><span class="p">()</span>
 </pre></div>
 </div>
-<a class="only-dark reference internal image-reference" href="_static/logos/PyADI-IIO_Logo_w_600.png?://"><img alt="PyADI-IIO Logo" class="only-dark" src="_static/logos/PyADI-IIO_Logo_w_600.png?://" style="width: 700px;" /></a>
-<a class="only-light reference internal image-reference" href="_static/logos/PyADI-IIO_Logo_600.png?://"><img alt="PyADI-IIO Logo" class="only-light" src="_static/logos/PyADI-IIO_Logo_600.png?://" style="width: 700px;" /></a>
-<div class="flex badges"><a class="icon link reference external image-reference" href="https://github.com/analogdevicesinc/pyadi-iio/actions" target="_blank"><img alt="Build Status" src="https://github.com/analogdevicesinc/pyadi-iio/actions/workflows/test.yml/badge.svg" /></a>
-<a class="icon link reference external image-reference" href="https://badge.fury.io/py/pyadi-iio" target="_blank"><img alt="PyPI version" src="https://badge.fury.io/py/pyadi-iio.svg" /></a>
-<a class="icon link reference external image-reference" href="https://www.codacy.com/gh/analogdevicesinc/pyadi-iio/dashboard?utm_source=github.com&amp;amp;utm_medium=referral&amp;amp;utm_content=analogdevicesinc/pyadi-iio&amp;amp;utm_campaign=Badge_Grade" target="_blank"><img alt="Codacy Badge" src="https://app.codacy.com/project/badge/Grade/200b7479f5024f6ea386350ca1049077" /></a>
-<a class="icon link reference external image-reference" href="https://www.python.org/downloads/" target="_blank"><img alt="Python Version" src="https://img.shields.io/pypi/pyversions/pyadi-iio" /></a>
-</div><div class="flex badges"><a class="icon link reference external image-reference" href="http://analogdevicesinc.github.io/pyadi-iio/" target="_blank"><img alt="GitHub Pages" src="https://img.shields.io/badge/docs-GitHub%20Pages-blue.svg" /></a>
-<a class="icon link reference external image-reference" href="https://ez.analog.com/sw-interface-tools/f/q-a" target="_blank"><img alt="EngineerZone Support" src="https://img.shields.io/badge/Support-on%20EngineerZone-blue.svg" /></a>
-<a class="icon link reference external image-reference" href="https://wiki.analog.com/resources/tools-software/linux-software/pyadi-iio" target="_blank"><img alt="Analog Wiki" src="https://img.shields.io/badge/Wiki-on%20wiki.analog.com-blue.svg" /></a>
+<a class="only-dark reference internal image-reference" href="_static/logos/PyADI-IIO_Logo_w_600.png?://"><img alt="PyADI-IIO Logo" class="only-dark" src="_static/logos/PyADI-IIO_Logo_w_600.png?://" style="width: 700px;" />
+</a>
+<a class="only-light reference internal image-reference" href="_static/logos/PyADI-IIO_Logo_600.png?://"><img alt="PyADI-IIO Logo" class="only-light" src="_static/logos/PyADI-IIO_Logo_600.png?://" style="width: 700px;" />
+</a>
+<div class="flex badges"><a class="icon link reference external image-reference" href="https://github.com/analogdevicesinc/pyadi-iio/actions" target="_blank"><img alt="Build Status" src="https://github.com/analogdevicesinc/pyadi-iio/actions/workflows/test.yml/badge.svg" />
+</a>
+<a class="icon link reference external image-reference" href="https://badge.fury.io/py/pyadi-iio" target="_blank"><img alt="PyPI version" src="https://badge.fury.io/py/pyadi-iio.svg" />
+</a>
+<a class="icon link reference external image-reference" href="https://app.codacy.com/gh/analogdevicesinc/pyadi-iio/dashboard?utm_source=gh&amp;utm_medium=referral&amp;utm_content=&amp;utm_campaign=Badge_grade" target="_blank"><img alt="Codacy Badge" src="https://app.codacy.com/project/badge/Grade/200b7479f5024f6ea386350ca1049077" />
+</a>
+<a class="icon link reference external image-reference" href="https://www.python.org/downloads/" target="_blank"><img alt="Python Version" src="https://img.shields.io/pypi/pyversions/pyadi-iio" />
+</a>
+</div><div class="flex badges"><a class="icon link reference external image-reference" href="http://analogdevicesinc.github.io/pyadi-iio/" target="_blank"><img alt="GitHub Pages" src="https://img.shields.io/badge/docs-GitHub%20Pages-blue.svg" />
+</a>
+<a class="icon link reference external image-reference" href="https://ez.analog.com/sw-interface-tools/f/q-a" target="_blank"><img alt="EngineerZone Support" src="https://img.shields.io/badge/Support-on%20EngineerZone-blue.svg" />
+</a>
+<a class="icon link reference external image-reference" href="https://wiki.analog.com/resources/tools-software/linux-software/pyadi-iio" target="_blank"><img alt="Analog Wiki" src="https://img.shields.io/badge/Wiki-on%20wiki.analog.com-blue.svg" />
+</a>
 </div></section>
 <section id="requirements">
-<h1>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h1>
+<h1>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="icon link reference external" href="http://github.com/analogdevicesinc/libiio/" target="_blank">libiio</a></p></li>
 <li><p>numpy</p></li>
@@ -330,7 +343,7 @@ Content on this topic
 </ul>
 </section>
 <section id="sections">
-<h1>Sections<a class="headerlink" href="#sections" title="Permalink to this heading"></a></h1>
+<h1>Sections<a class="headerlink" href="#sections" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="guides/quick.html">Quick Start</a></li>
@@ -347,7 +360,7 @@ Content on this topic
 </div>
 </section>
 <section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
@@ -370,7 +383,7 @@ Content on this topic
   <label id="cancel-area-show-toc" for="input-show-toc"></label>
   <label id="cancel-area-show-localtoc" for="input-show-localtoc"></label>
     <footer>
-      &#169;2019-2025, Analog Devices, Inc
+      &#169;2019-2026, Analog Devices, Inc
       
       |
       Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>

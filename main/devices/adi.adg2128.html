@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta content="Bases: attribute, context_manager" name="description" />
 
-    <title>adi.adg2128 module &#8212; Analog Devices Hardware Python Interfaces 0.0.20 documentation</title>
+    <title>adi.adg2128 module &#8212; Analog Devices Hardware Python Interfaces 0.0.21 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8e8a900e" />
-    <link rel="stylesheet" type="text/css" href="../_static/app.min.css?v=85dade36" />
+    <link rel="stylesheet" type="text/css" href="../_static/app.min.css?v=5d595293" />
     <link rel="stylesheet" type="text/css" href="../_static/css/style.css?v=632a43e7" />
-    <script async="async" src="../_static/app.umd.js?v=3a4867e9"></script>
+    <script async="async" src="../_static/app.umd.js?v=46a18818"></script>
     <link rel="icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -20,7 +20,7 @@
   
   
   <meta name="repository" content="pyadi-iio">
-  <meta name="version" content="0.0.20">
+  <meta name="version" content="0.0.21">
   
     <meta name="page_source_suffix" content=".rst">
   
@@ -112,7 +112,7 @@
     </div>
 
   
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
     <a id="logo" href="../index.html">
       <img class="only-light" src="../_static/logos/PyADI-IIO_Logo_300_cropped.png"/>
@@ -165,6 +165,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="adi.ad5592r.html">ad5592r</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.ad5627.html">ad5627</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.ad5686.html">ad5686</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adi.ad5710r.html">ad5710r</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.ad579x.html">ad579x</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.ad5754r.html">ad5754r</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.ad5940.html">adi.ad5940 module</a></li>
@@ -176,6 +177,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="adi.ad719x.html">ad719x</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.ad7291.html">ad7291</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.ad738x.html">ad738x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adi.ad7405.html">ad7405</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.ad7490.html">ad7490</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.ad7606.html">ad7606</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.ad7689.html">ad7689</a></li>
@@ -206,6 +208,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="adi.ad9680.html">ad9680</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.ad4858.html">ad4858</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.ad9739a.html">adi.ad9739a module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adi.ada4355.html">ada4355</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.ada4961.html">adi.ada4961 module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.adaq8092.html">adaq8092</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.adar1000.html">adar1000</a></li>
@@ -272,6 +275,7 @@ Content on this topic
 <li class="toctree-l2"><a class="reference internal" href="adi.jesd.html">jesd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.lm75.html">lm75</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.ltc2314_14.html">ltc2314_14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adi.ltc2378.html">ltc2378</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.ltc2387.html">ltc2387</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.ltc2499.html">adi.ltc2499 module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.ltc2664.html">ltc2664</a></li>
@@ -305,15 +309,15 @@ Content on this topic
           <div class="body" role="main">
             
   <section id="module-adi.adg2128">
-<span id="adi-adg2128-module"></span><h1>adi.adg2128 module<a class="headerlink" href="#module-adi.adg2128" title="Permalink to this heading"></a></h1>
+<span id="adi-adg2128-module"></span><h1>adi.adg2128 module<a class="headerlink" href="#module-adi.adg2128" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="adi.adg2128.adg2128">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adi.adg2128.</span></span><span class="sig-name descname"><span class="pre">adg2128</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adi.adg2128.adg2128" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adi.adg2128.</span></span><span class="sig-name descname"><span class="pre">adg2128</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adi.adg2128.adg2128" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">attribute</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">context_manager</span></code></p>
 <p>ADG2128 cross point switch.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="adi.adg2128.adg2128.add">
-<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">addr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adi.adg2128.adg2128.add" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">addr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adi.adg2128.adg2128.add" title="Link to this definition"></a></dt>
 <dd><p>Add device by its i2c address.</p>
 <p>Multiple devices may be added provided they all have their Y terminals
 connected (common Y configuration).
@@ -326,7 +330,7 @@ addr - device address on i2c bus</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="adi.adg2128.adg2128.immediate">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">immediate</span></span><a class="headerlink" href="#adi.adg2128.adg2128.immediate" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">immediate</span></span><a class="headerlink" href="#adi.adg2128.adg2128.immediate" title="Link to this definition"></a></dt>
 <dd><p>Specify whether the writing of a switch is immediate or not.</p>
 <p>When it’s not immediate, the new switch configuration is only
 latched into the device (see LDSW in datasheet).</p>
@@ -334,7 +338,7 @@ latched into the device (see LDSW in datasheet).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="adi.adg2128.adg2128.open_all">
-<span class="sig-name descname"><span class="pre">open_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#adi.adg2128.adg2128.open_all" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">open_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#adi.adg2128.adg2128.open_all" title="Link to this definition"></a></dt>
 <dd><p>Open all switches.</p>
 <p>For each device, iterate all x-y combinations and
 open all the switches at once.</p>
@@ -344,7 +348,7 @@ open all the switches at once.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="adi.adg2128.yline">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adi.adg2128.</span></span><span class="sig-name descname"><span class="pre">yline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dev</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adi.adg2128.yline" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">adi.adg2128.</span></span><span class="sig-name descname"><span class="pre">yline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dev</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#adi.adg2128.yline" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 </dd></dl>
 
@@ -365,7 +369,7 @@ open all the switches at once.</p>
   <label id="cancel-area-show-toc" for="input-show-toc"></label>
   <label id="cancel-area-show-localtoc" for="input-show-localtoc"></label>
     <footer>
-      &#169;2019-2025, Analog Devices, Inc
+      &#169;2019-2026, Analog Devices, Inc
       
       |
       Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>
